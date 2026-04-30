@@ -1,0 +1,54 @@
+/* ── Lamily handwriting — letter-by-letter elegant build ───── */
+
+.lamily-handwriting {
+  display: block;
+  position: relative;
+}
+
+.lamily-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Outline strokes: dashed reveal, then fade out as fill takes over */
+.lamily-stroke-path {
+  stroke-dasharray: 5000;
+  stroke-dashoffset: 5000;
+  opacity: 0;
+}
+
+.is-playing .lamily-stroke-path {
+  animation:
+    lamily-draw  var(--stroke-dur, 0.5s) cubic-bezier(0.4, 0.0, 0.5, 1.0) var(--stroke-start, 0s) forwards,
+    lamily-stroke-show 0.001s linear var(--stroke-start, 0s) forwards,
+    lamily-stroke-hide 0.35s ease-out var(--stroke-fade-start, 0s) forwards;
+}
+
+@keyframes lamily-draw {
+  0%   { stroke-dashoffset: 5000; }
+  100% { stroke-dashoffset: 0; }
+}
+@keyframes lamily-stroke-show {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes lamily-stroke-hide {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Fill silhouettes: each letter fades in once its outline finishes */
+.lamily-fill-path {
+  opacity: 0;
+}
+
+.is-playing .lamily-fill-path {
+  animation: lamily-fill var(--fill-dur, 0.3s) ease-out var(--fill-start, 0s) forwards;
+}
+
+@keyframes lamily-fill {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}

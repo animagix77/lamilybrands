@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lamily — A house of cold, small joys</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="site.css?v=11" />
+<link rel="stylesheet" href="lamily-handwriting.css?v=3" />
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="lamily-paths.js?v=1"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="lamily-handwriting.jsx?v=4"></script>
+<script type="text/babel" src="site.jsx"></script>
+<script type="text/babel" src="sections.jsx"></script>
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "cream",
+  "accent": "pink",
+  "density": "cozy",
+  "heroVariant": "bold",
+  "showTagline": true
+}/*EDITMODE-END*/;
+
+function App() {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  const className = [
+    "app",
+    "theme-" + tweaks.theme,
+    "accent-" + tweaks.accent,
+    "density-" + tweaks.density,
+  ].join(" ");
+
+  return (
+    <div className={className}>
+      <Nav tweaks={tweaks} />
+      <Hero tweaks={tweaks} />
+      {tweaks.showTagline && <TaglineStrip />}
+      <Families />
+      <Tubblys />
+      <Blossom />
+      <Story />
+      <Stockists />
+      <Footer />
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Hero">
+          <TweakRadio
+            label="Hero variant"
+            value={tweaks.heroVariant}
+            onChange={(v) => setTweak('heroVariant', v)}
+            options={[
+              { value: 'bold', label: 'Bold' },
+              { value: 'editorial', label: 'Editorial' },
+              { value: 'photo', label: 'Photo' },
+            ]}
+          />
+        </TweakSection>
+
+        <TweakSection title="Palette">
+          <TweakSelect
+            label="Background tone"
+            value={tweaks.theme}
+            onChange={(v) => setTweak('theme', v)}
+            options={[
+              { value: 'cream', label: 'Cream (default)' },
+              { value: 'paper', label: 'Paper neutral' },
+              { value: 'rose', label: 'Rose petal' },
+              { value: 'mint', label: 'Soft mint' },
+            ]}
+          />
+          <TweakRadio
+            label="Accent color"
+            value={tweaks.accent}
+            onChange={(v) => setTweak('accent', v)}
+            options={[
+              { value: 'pink', label: 'Pink' },
+              { value: 'yellow', label: 'Yellow' },
+              { value: 'violet', label: 'Violet' },
+              { value: 'tomato', label: 'Tomato' },
+            ]}
+          />
+        </TweakSection>
+
+        <TweakSection title="Layout">
+          <TweakRadio
+            label="Density"
+            value={tweaks.density}
+            onChange={(v) => setTweak('density', v)}
+            options={[
+              { value: 'airy', label: 'Airy' },
+              { value: 'cozy', label: 'Cozy' },
+              { value: 'packed', label: 'Packed' },
+            ]}
+          />
+          <TweakToggle
+            label="Tagline marquee"
+            value={tweaks.showTagline}
+            onChange={(v) => setTweak('showTagline', v)}
+          />
+        </TweakSection>
+      </TweaksPanel>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
