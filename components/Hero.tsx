@@ -18,15 +18,16 @@ export function Hero() {
       </div>
       <div className="hero-bold-bottom">
         <h1 className="hero-bold-headline">
-          One <span className="ink-accent">family.</span>
+          Good <em>desserts.</em>
           <br />
-          Two flavors of <em>obsession.</em>
+          Done <em>right.</em>
         </h1>
         <div className="hero-bold-side">
           <p>
-            Tubbly&apos;s makes deluxe ice cream bars for people who treat dessert
-            like a small ceremony. True Blossom makes frozen dairy desserts so
-            beautiful you&apos;ll forget to eat them. Both are us.
+            This isn&apos;t your everyday dessert.
+            <br />
+            We focus on texture, detail and the kind of indulgence you actually
+            notice.
           </p>
           <a href="#families" className="btn btn-primary">
             Meet the family <Arrow size={14} />

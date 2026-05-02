@@ -6,11 +6,11 @@ export function Families() {
       <div className="section-head">
         <span className="section-eyebrow">01 — Our Families</span>
         <h2 className="section-title">
-          Two sub-brands. <em>Distinct personalities.</em> Same fridge.
+          Different style, <em>Same standard.</em>
         </h2>
         <p className="section-lede">
-          We don&apos;t make one ice cream and stretch it across a wall of pints.
-          We make two specific things, very carefully, for two specific moods.
+          We don&apos;t make everything the same way. Each product is made with
+          a clear purpose and done properly.
         </p>
       </div>
 
@@ -53,8 +53,9 @@ export function Families() {
             <h3 className="family-card-name">True Blossom</h3>
             <p className="family-card-tag-line">Frozen dairy desserts</p>
             <p className="family-card-blurb">
-              Sculpted, flower-shaped, almost too pretty to bite. Fruit-forward,
-              gently dairy, completely a moment.
+              Light, smooth, and consistent in texture.
+              <br />
+              Balanced flavor designed to be easy to enjoy.
             </p>
             <span className="family-card-link">
               Visit True Blossom <Arrow size={14} rotate={-45} />
