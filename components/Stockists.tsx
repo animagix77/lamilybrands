@@ -1,4 +1,5 @@
 import { Arrow } from "./icons";
+import { StockistRequest } from "./StockistRequest";
 
 const STOCKISTS = [
   { name: "Bristol Farms", region: "Southern California", note: "Both lines" },
@@ -36,12 +37,7 @@ export function Stockists() {
           </li>
         ))}
       </ul>
-      <div className="stockist-cta">
-        <p>Don&apos;t see your local market?</p>
-        <a href="#" className="btn btn-primary">
-          Request Lamily near you <Arrow size={14} />
-        </a>
-      </div>
+      <StockistRequest />
     </section>
   );
 }
