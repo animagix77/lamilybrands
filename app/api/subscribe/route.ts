@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const FORWARD_TO = "info@judgedeanllc.com";
+// TEMPORARY: while Resend is on the shared `onboarding@resend.dev` sender,
+// the free tier only allows sending to the address that owns the Resend
+// account. Once we verify `judgedeanllc.com` (or `lamilybrands.com`) as a
+// sending domain in Resend and update the `from` address to use it, switch
+// this back to `info@judgedeanllc.com`.
+const FORWARD_TO = "animagix@mac.com";
 
 export async function POST(request: Request) {
   const formData = await request.formData().catch(() => null);
