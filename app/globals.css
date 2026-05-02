@@ -100,7 +100,40 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
   padding: 12px 36px;
 }
+.nav-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
 .nav-logo { display: inline-flex; }
+
+.nav-hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  padding: 8px 6px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.nav-hamburger-bar {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.is-menu-open .nav-hamburger-bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.is-menu-open .nav-hamburger-bar:nth-child(2) { opacity: 0; }
+.is-menu-open .nav-hamburger-bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
 .nav-links {
   display: flex;
   gap: 28px;
@@ -1099,7 +1132,48 @@ img { max-width: 100%; display: block; }
    Responsive
    ============================================================ */
 @media (max-width: 900px) {
+  .nav { padding: 14px 18px; }
+  .nav.is-scrolled { padding: 10px 18px; }
+  .nav-hamburger { display: inline-flex; }
+  .nav-cta {
+    padding: 8px 13px;
+    font-size: 11px;
+    gap: 6px;
+  }
+  .nav-cta span { white-space: nowrap; }
+  .nav-actions { gap: 6px; }
+  /* Hide "Find a Freezer" on mobile — it's redundant with the hamburger
+     menu's Stockists link, and dropping it gives Order! room to breathe. */
+  .nav-actions .nav-cta:not(.nav-cta-primary) { display: none; }
+
+  /* Mobile slide-down menu */
   .nav-links { display: none; }
+  .nav.is-menu-open .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 28px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--cream);
+    padding: 96px 36px 36px;
+    z-index: 49;
+  }
+  .nav.is-menu-open .nav-links a {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 300;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    padding: 0;
+  }
+  .nav.is-menu-open .nav-links a:hover { color: var(--accent); opacity: 1; }
+
   .hero-bold-bottom,
   .tubblys-feature,
   .blossom-flavor,
