@@ -33,10 +33,21 @@ export function Nav() {
         <li><a href="#story">Our Story</a></li>
         <li><a href="#stockists">Stockists</a></li>
       </ul>
-      <a href="#stockists" className="nav-cta">
-        <span>Find a Freezer</span>
-        <Arrow size={14} rotate={-45} />
-      </a>
+      <div className="nav-actions">
+        <a href="#stockists" className="nav-cta">
+          <span>Find a Freezer</span>
+          <Arrow size={14} rotate={-45} />
+        </a>
+        <a
+          href="https://shopify.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-cta nav-cta-primary"
+        >
+          <span>Order!</span>
+          <Arrow size={14} rotate={-45} />
+        </a>
+      </div>
     </nav>
   );
 }

@@ -1,5 +1,3 @@
-import { Arrow } from "./icons";
-
 export function Tubblys() {
   return (
     <section id="tubblys" className="brand-section tubblys-section">
@@ -34,9 +32,6 @@ export function Tubblys() {
             to get right. Crackling dark chocolate shell. Pistachio cream and
             crisp kataifi inside. A drizzle on top because we couldn&apos;t help it.
           </p>
-          <a href="#" className="btn btn-tubblys">
-            See full nutrition <Arrow size={14} />
-          </a>
         </div>
       </div>
 

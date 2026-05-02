@@ -115,17 +115,33 @@ img { max-width: 100%; display: block; }
   transition: opacity 0.2s;
 }
 .nav-links a:hover { opacity: 0.55; }
-.nav-cta {
+.nav-actions {
   justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
   border: 1px solid var(--ink);
   border-radius: 999px;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 .nav-cta:hover { background: var(--ink); color: var(--cream); }
+
+.nav-cta-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--cream);
+}
+.nav-cta-primary:hover {
+  background: color-mix(in srgb, var(--accent) 88%, var(--ink));
+  border-color: color-mix(in srgb, var(--accent) 88%, var(--ink));
+  color: var(--cream);
+}
 
 /* ============================================================
    Hero — bold variant
