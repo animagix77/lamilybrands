@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { LAMILY_LETTERS, LAMILY_PATH_DATA } from "./lamily-paths";
+import { LAMILY_LETTERS, LAMILY_PATH_DATA, LAMILY_SMOOTHED_COMPONENTS } from "./lamily-paths";
 
 type Props = {
   width?: string | number;
@@ -28,7 +28,7 @@ export function LamilyHandwriting({
   className = "",
 }: Props) {
   const data = LAMILY_PATH_DATA;
-  const components = data.components;
+  const components = LAMILY_SMOOTHED_COMPONENTS;
 
   const containerStyle: AnimVars = {
     width,
@@ -50,6 +50,7 @@ export function LamilyHandwriting({
         xmlns="http://www.w3.org/2000/svg"
         className="lamily-svg"
         preserveAspectRatio="xMidYMid meet"
+        shapeRendering="geometricPrecision"
       >
         <g className="lamily-stroke-layer">
           {components.map((c, i) => {

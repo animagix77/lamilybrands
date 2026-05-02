@@ -1,9 +1,46 @@
 "use client";
 
+import { useState } from "react";
 import { Arrow } from "./icons";
 import { LamilyHandwriting } from "./LamilyHandwriting";
 
+type FormStatus = "idle" | "sending" | "ok" | "error";
+
 export function Footer() {
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [message, setMessage] = useState<string>("");
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status === "sending") return;
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    setStatus("sending");
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/subscribe", { method: "POST", body: data });
+      const json = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+      };
+
+      if (res.ok && json.ok) {
+        setStatus("ok");
+        setMessage("Thanks — we'll be in touch.");
+        form.reset();
+      } else {
+        setStatus("error");
+        setMessage(json.error ?? "Something went wrong. Try again?");
+      }
+    } catch {
+      setStatus("error");
+      setMessage("Network hiccup — try again in a moment?");
+    }
+  }
+
   return (
     <footer className="footer">
       <div className="footer-mark">
@@ -43,15 +80,28 @@ export function Footer() {
         <div className="footer-newsletter">
           <h5>Cold mail, occasionally.</h5>
           <p>New flavors, new freezers, no spam.</p>
-          <form
-            className="newsletter-form"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input type="email" placeholder="you@home.com" aria-label="Email" />
-            <button type="submit" aria-label="Subscribe">
+          <form className="newsletter-form" onSubmit={onSubmit}>
+            <input
+              type="email"
+              name="email"
+              placeholder="you@home.com"
+              aria-label="Email"
+              required
+              disabled={status === "sending"}
+            />
+            <button
+              type="submit"
+              aria-label="Subscribe"
+              disabled={status === "sending"}
+            >
               <Arrow size={14} />
             </button>
           </form>
+          {message ? (
+            <p className={`newsletter-status newsletter-status-${status}`}>
+              {message}
+            </p>
+          ) : null}
         </div>
       </div>
       <div className="footer-base">

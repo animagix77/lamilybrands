@@ -1,5 +1,6 @@
 // Auto-generated from the Lamily logo PNG trace.
 // Six connected components in left-to-right writing order.
+import { smoothPolylinePath } from "./lamily-smooth";
 
 export type LamilyComponent = {
   d: string;
@@ -51,6 +52,15 @@ export const LAMILY_PATH_DATA: LamilyPathData = {
     },
   ],
 };
+
+// Smoothed variants — Catmull-Rom -> cubic Bezier so the wordmark renders
+// without visible faceting from the source polyline trace. Computed once at
+// module load.
+export const LAMILY_SMOOTHED_COMPONENTS: LamilyComponent[] =
+  LAMILY_PATH_DATA.components.map((c) => ({
+    ...c,
+    d: smoothPolylinePath(c.d),
+  }));
 
 // Per-letter timings on a unit timeline. The whole sequence is normalized
 // to the `duration` prop of <LamilyHandwriting>. Each letter: outline reveal

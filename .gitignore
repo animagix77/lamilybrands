@@ -6,6 +6,10 @@ out
 .env*.local
 .vercel
 next-env.d.ts.bak
+tsconfig.tsbuildinfo
 
 # Source design bundle archive (large binary; the unpacked design_handoff_lamily_site/ tree is tracked)
 lamily brands.zip
+
+# Local credentials / 2FA recovery — never commit
+recovery codes*/
