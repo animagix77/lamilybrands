@@ -1,13 +1,5 @@
 import { Star } from "./icons";
 
-const BLOOMING_SOON = [
-  "Yuzu Petal",
-  "White Peach Sakura",
-  "Lychee Rose",
-  "Cassis Camellia",
-  "Mystic Mangosteen",
-];
-
 export function Blossom() {
   return (
     <section id="blossom" className="brand-section blossom-section">
@@ -36,9 +28,8 @@ export function Blossom() {
             <span className="bf-num">№ 01</span>
             <h3>Crimson Dragon Fruit</h3>
             <p>
-              Pink as a confession. Dragonfruit pulp folded into cream and
-              frozen into the shape of a closed bud. Tastes like the prettiest
-              part of summer.
+              Blush pink and quietly indulgent. Dragon fruit essence folded
+              into a silky frozen dairy dessert. A delicate taste of summer.
             </p>
           </div>
         </article>
@@ -48,9 +39,9 @@ export function Blossom() {
             <span className="bf-num">№ 02</span>
             <h3>Blueberry Bliss</h3>
             <p>
-              Quieter, dustier, dreamier. Blueberry compote and milk swirled
-              into a soft violet bloom. Tastes like a Sunday afternoon you wish
-              would never end.
+              Soft, muted, and indulgent. Blueberry notes blended into a creamy
+              frozen dairy dessert, finished in a gentle violet hue. A Sunday
+              afternoon that lingers.
             </p>
           </div>
           <div className="bf-image">
@@ -61,15 +52,6 @@ export function Blossom() {
             />
           </div>
         </article>
-      </div>
-
-      <div className="blossom-coming">
-        <h4>Blooming soon —</h4>
-        <ul>
-          {BLOOMING_SOON.map((flavor) => (
-            <li key={flavor}>{flavor}</li>
-          ))}
-        </ul>
       </div>
     </section>
   );

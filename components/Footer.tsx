@@ -72,7 +72,6 @@ export function Footer() {
         <div>
           <h5>Find us</h5>
           <ul>
-            <li><a href="#stockists">Stockists</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Instagram</a></li>
           </ul>

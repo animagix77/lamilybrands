@@ -73,13 +73,8 @@ export function Nav() {
         <li><a href="#tubblys" onClick={closeMenu}>Tubbly&apos;s</a></li>
         <li><a href="#blossom" onClick={closeMenu}>True Blossom</a></li>
         <li><a href="#story" onClick={closeMenu}>Our Story</a></li>
-        <li><a href="#stockists" onClick={closeMenu}>Stockists</a></li>
       </ul>
       <div className="nav-actions">
-        <a href="#stockists" className="nav-cta" onClick={closeMenu}>
-          <span>Find a Freezer</span>
-          <Arrow size={14} rotate={-45} />
-        </a>
         <a
           href="https://shopify.com"
           target="_blank"
