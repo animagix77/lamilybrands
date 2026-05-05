@@ -10,7 +10,12 @@ export function Tubblys() {
           </p>
         </div>
         <div className="brand-mast-right">
-          <div className="brand-mast-blob">Tubbly&apos;s</div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="brand-mast-logo"
+            src="/assets/tubblys-logo.png"
+            alt="Tubbly's"
+          />
         </div>
       </div>
 
@@ -28,9 +33,9 @@ export function Tubblys() {
           <span className="feature-eyebrow">Hero of the line</span>
           <h3 className="feature-headline">The Dubai Chocolate Bar.</h3>
           <p className="feature-body">
-            A bar that took six months and approximately a thousand pistachios
-            to get right. Crackling dark chocolate shell. Pistachio cream and
-            crisp kataifi inside. A drizzle on top because we couldn&apos;t help it.
+            A bar we took the time to get right.
+            Smooth chocolate shell with pistachio cream and crisp kataifi inside.
+            Finished with a light drizzle.
           </p>
         </div>
       </div>
